@@ -22,13 +22,13 @@ WHERE
     AND e.plan_id <> 32 -- Se quitan las empresas con plan free --
     AND d.fecha_emision >= '2023-11-01' -- Dte emitidos desde noviembre 2023 en adelante -- 
   	AND d.fecha_emision <= '2024-01-31'-- Dte emitidos hasta enero 2024 -- 
-		AND d.tipo IN (39,41,48) -- Son Dte resúmenes de BOL-EL, BOL-EE y CPE --
+	AND d.tipo IN (39,41,48) -- Son Dte resúmenes de BOL-EL, BOL-EE y CPE --
     AND d.deleted = 0 -- No son Dtes eliminadas --
    	AND s.modelo = 'Dte' -- Corresponden a modelo Dte -- 
     AND s.last_record = 1 -- Se verifica su saldo actual --
     AND s.saldo_deudor  <> d.monto_total -- Si el s.saldo_deudor y el d.monto total son diferentes, quiere decir que se ha conciliado una parte --
-		AND d.monto_corregido = 0 -- Son resúmenes de boletas a las cuales no se han asociado NC o si se asociaron pero se anulo en su totalidad --   
-		AND s.saldo_deudor > 0 -- Para quitar los resúmenes de boletas que han sido anuladas en su totalidad, buscamos que su saldo_deudor sea mayor a 0 --
+	AND d.monto_corregido = 0 -- Son resúmenes de boletas a las cuales no se han asociado NC o si se asociaron pero se anulo en su totalidad --   
+	AND s.saldo_deudor > 0 -- Para quitar los resúmenes de boletas que han sido anuladas en su totalidad, buscamos que su saldo_deudor sea mayor a 0 --
     AND d.empresa_id NOT IN (SELECT empresa_id 
     	FROM credenciales_bsale cb 
     	WHERE cb.activa = 1) -- No tienen Bsale --
@@ -44,6 +44,6 @@ WHERE
     	AND d3.fecha_emision >= '2023-11-01'
     	AND s.modelo = 'Dte'
     	AND s.last_record = 1
-		  AND s.saldo_acreedor > 0) -- Tienen NC/ND emitidas posterior a noviembre 2023, con referencia a BOL-EL, BOL-EE y CPE y su s.saldo_acreedor es mayor a 0, por tanto no han sido asociadas a un documento --
+		AND s.saldo_acreedor > 0) -- Tienen NC/ND emitidas posterior a noviembre 2023, con referencia a BOL-EL, BOL-EE y CPE y su s.saldo_acreedor es mayor a 0, por tanto no han sido asociadas a un documento --
 ORDER BY
 	d.empresa_id ASC
