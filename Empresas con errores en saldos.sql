@@ -1,6 +1,6 @@
 -- Empresas con errores de saldo en facturas de compra 
 SELECT 
-	COUNT(DISTINCT s.empresa_id) AS Q_empresaskl
+	COUNT(DISTINCT s.empresa_id) AS Q_empresas
 FROM 
 	saldos s 
 JOIN
