@@ -1,3 +1,4 @@
+-- Tiempo que demoran las empresas en clasificar sus documentos
 WITH ProrratasOrdenadas AS (
     SELECT
         p.id,

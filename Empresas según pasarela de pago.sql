@@ -1,3 +1,4 @@
+-- Empresas que utilizan Getnet o Mercadolibre como pasarela de pago
 SELECT 
 	DISTINCT e.id,
 	p.nombre

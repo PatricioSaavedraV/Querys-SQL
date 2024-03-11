@@ -1,3 +1,4 @@
+-- Empresas que concilian mal sus NC
 SELECT 
 	DISTINCT d.empresa_id,
 	u.id,
