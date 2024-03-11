@@ -1,8 +1,8 @@
--- Empresas con la integración al SII mal conectada -- 
+-- Empresas con la integración al SII mal conectada -- DFSA
 SELECT 
 	e.id 'Empresa ID',
 	e.rut 'Rut empresa',
-	e.usuario_facturador 'Credenciales facturador SII',
+	e.usuario_facturador 'Credenciales facturador SII', 
 	cb.activa 'Bsale activo'
 FROM 
 	empresas e 
